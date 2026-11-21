@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cxmh8j8ux2nj1" path="res://scripts/map_importer.gd" id="1_0wkb6"]
 [ext_resource type="Script" uid="uid://dg2cxq13bya43" path="res://scripts/snow_system.gd" id="1_mli2r"]
 [ext_resource type="Script" uid="uid://cf6andyhndnr6" path="res://scenes/world/niva.gd" id="2_mli2r"]
+[ext_resource type="Script" uid="uid://vir8eep0nsvg" path="res://scripts/camera_follow.gd" id="3_wbupf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wkb6"]
 sky_top_color = Color(0.039215688, 0.05490196, 0.15294118, 1)
@@ -18,6 +19,9 @@ background_mode = 2
 sky = SubResource("Sky_dygme")
 ambient_light_color = Color(0.101960786, 0.101960786, 0.22745098, 1)
 ambient_light_energy = 0.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.101960786, 0.101960786, 0.18039216, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojny8"]
 albedo_color = Color(0.3647059, 0.6313726, 0.1882353, 1)
@@ -102,19 +106,6 @@ script = ExtResource("2_mli2r")
 [node name="Body" type="MeshInstance3D" parent="Niva" unique_id=1936660364]
 mesh = SubResource("BoxMesh_of51h")
 
-[node name="Headlight_L" type="SpotLight3D" parent="Niva/Body" unique_id=930931655]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -0.7, 0, 2.2)
-light_color = Color(1, 0.6666667, 0.26666668, 1)
-light_energy = 3.0
-shadow_enabled = true
-spot_attenuation = 2.0
-
-[node name="Headlight_R" type="SpotLight3D" parent="Niva/Body" unique_id=1211973914]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0.7, 0, 2.2)
-light_color = Color(1, 0.6666667, 0.26666668, 1)
-light_energy = 3.0
-spot_attenuation = 2.0
-
 [node name="Wheel_FL" type="MeshInstance3D" parent="Niva" unique_id=125822844]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1, -0.3, 1.5)
 mesh = SubResource("CylinderMesh_of51h")
@@ -135,12 +126,14 @@ mesh = SubResource("CylinderMesh_62d20")
 shape = SubResource("BoxShape3D_of51h")
 
 [node name="CameraArm" type="SpringArm3D" parent="Niva" unique_id=1649822277]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-spring_length = 8.0
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 3, 0)
+spring_length = 12.0
+script = ExtResource("3_wbupf")
 
 [node name="Camera3D" type="Camera3D" parent="Niva/CameraArm" unique_id=562039877]
-transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.98480767, 0.17364816, 0, -0.17364816, 0.98480767, 0, 0, 0)
 current = true
+fov = 60.0
 
 [node name="SnowHolder" type="Node3D" parent="." unique_id=1886656379]
 script = ExtResource("1_mli2r")
