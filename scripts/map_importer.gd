@@ -87,7 +87,7 @@ func build_road(geom: Dictionary) -> void:
 	var coords = geom.get("coordinates", [])
 	
 	if geom_type == "LineString":
-		draw_line_strip(coords, Color(0.9, 0.9, 0.9, 1.0), 0.3)
+		draw_line_strip(coords, Color(1.0, 0.95, 0.8, 1.0), 0.8)
 	elif geom_type == "MultiLineString":
 		for line in coords:
 			draw_line_strip(line, Color(0.9, 0.9, 0.9, 1.0), 0.3)
@@ -123,7 +123,7 @@ func draw_line_strip(coords: Array, color: Color, width: float) -> void:
 	mi.material_override = mat
 	add_child(mi)
 	
-	mesh.surface_begin(Mesh.PRIMITIVE_LINES)
+	mesh.surface_begin(Mesh.PRIMITIVE_LINE_STRIP)
 	
 	for i in range(coords.size() - 1):
 		var p1: Array = coords[i]
