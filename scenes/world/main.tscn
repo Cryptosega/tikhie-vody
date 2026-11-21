@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://1bn35hhwjcj0"]
 
+[ext_resource type="Script" uid="uid://cxmh8j8ux2nj1" path="res://scripts/map_importer.gd" id="1_0wkb6"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wkb6"]
 
 [sub_resource type="Sky" id="Sky_dygme"]
@@ -18,6 +20,7 @@ subdivide_width = 10
 subdivide_depth = 10
 
 [node name="Node3D" type="Node3D" unique_id=1865397387]
+script = ExtResource("1_0wkb6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=300970761]
 transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
@@ -27,7 +30,7 @@ shadow_enabled = true
 environment = SubResource("Environment_of51h")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=529624940]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 12, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 100)
 current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1697588068]
