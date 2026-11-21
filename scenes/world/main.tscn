@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://1bn35hhwjcj0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wkb6"]
+
+[sub_resource type="Sky" id="Sky_dygme"]
+sky_material = SubResource("ProceduralSkyMaterial_0wkb6")
+
+[sub_resource type="Environment" id="Environment_of51h"]
+background_mode = 2
+sky = SubResource("Sky_dygme")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojny8"]
+albedo_color = Color(0.3647059, 0.6313726, 0.1882353, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1080h"]
+size = Vector2(1000, 1000)
+subdivide_width = 10
+subdivide_depth = 10
+
+[node name="Node3D" type="Node3D" unique_id=1865397387]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=300970761]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=618790137]
+environment = SubResource("Environment_of51h")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=529624940]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 12, 20)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1697588068]
+material_override = SubResource("StandardMaterial3D_ojny8")
+mesh = SubResource("PlaneMesh_1080h")
